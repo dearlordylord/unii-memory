@@ -1,0 +1,38 @@
+#+title: unii-memory
+
+An independent Emacs Lisp implementation of Victor Taelin's UNII memory design:
+a durable journal, immutable binary summary tree, bounded persisted context
+views, asynchronous compaction, and inspectable requests and usage.
+
+Requires Emacs 29.1+, Linux, =flock= and =truncate=. Tested on Emacs 30.2.
+The package has no model SDK or SlopChat dependency. Supply an asynchronous
+backend for summaries. Diagnostics and token accounting are session-only;
+reported cache reuse is distinguished from missing observations.
+
+* Install
+Clone this repository and add its root to =load-path=, then:
+#+begin_src elisp
+(require 'unii-memory)
+(let ((memory (unii-memory-open "/tmp/example-unii-memory")))
+  (unwind-protect
+      (progn
+        (unii-memory-append memory '(:kind "user" :text "Remember this."))
+        (unii-memory-snapshot memory))
+    (unii-memory-close memory)))
+#+end_src
+
+Short records need no model call. Longer records require a backend; see
+[[file:API.org][the API and backend contract]] for callbacks, retries, events and accounting.
+
+* Development
+#+begin_src sh
+make test
+make compile
+#+end_src
+Tests use temporary directories and fake inference, with no provider calls.
+SlopChat uses this repository as a submodule and loads the working sources
+there directly, allowing joint development without publishing each change.
+
+* License and provenance
+MIT for the original implementation. See [[file:LICENSE][LICENSE]] and
+[[file:THIRD_PARTY_NOTICES.md][UNII attribution]]. Upstream text is not relicensed.
