@@ -342,7 +342,7 @@ Prepared returns a call ID. Locally prepared input is not confirmed receipt."
          (store (unii-memory--state-diagnostics unii-memory))
          (id (unii-memory-context-capture store nil
                                      (append (list :kind 'compaction :attempt (unii-memory--job-attempts job)
-                                                   :unii-memory-prefix (unii-memory--job-context-view job)
+                                                   :memory-prefix (unii-memory--job-context-view job)
                                                    :prior-turns (plist-get request :prior-turns)) (unii-memory--request job))))
          (completed nil) cancel)
     (setq request (append (list :attempt-id id) request))

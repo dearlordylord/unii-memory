@@ -4,7 +4,7 @@ An independent Emacs Lisp implementation of Victor Taelin's UNII memory design:
 a durable journal, immutable binary summary tree, bounded persisted context
 views, asynchronous compaction, and inspectable requests and usage.
 
-Requires Emacs 29.1+, Linux, =flock= and =truncate=. Tested on Emacs 30.2.
+Requires Emacs 29.1+, Linux, =flock= and =truncate=.
 The package has no model SDK or SlopChat dependency. Supply an asynchronous
 backend for summaries. Diagnostics and token accounting are session-only;
 reported cache reuse is distinguished from missing observations.
@@ -28,7 +28,11 @@ Short records need no model call. Longer records require a backend; see
 #+begin_src sh
 make test
 make compile
+make package
 #+end_src
+=make package= builds =dist/unii-memory-0.1.0.tar= for
+=M-x package-install-file=. Release archives are available on GitHub.
+
 Tests use temporary directories and fake inference, with no provider calls.
 SlopChat uses this repository as a submodule and loads the working sources
 there directly, allowing joint development without publishing each change.
