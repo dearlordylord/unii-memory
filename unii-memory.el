@@ -2,7 +2,7 @@
 ;; Copyright (C) 2026 Igor Loskutov
 ;; Author: Igor Loskutov <igor.loskutoff@gmail.com>
 ;; Maintainer: Igor Loskutov <igor.loskutoff@gmail.com>
-;; Assisted-by: Codex:GPT-6
+;; Assisted-by: Codex:gpt-6-1-sol
 ;; URL: https://github.com/dearlordylord/unii-memory
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "29.1"))
